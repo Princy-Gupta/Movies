@@ -3,6 +3,7 @@
 export const ADD_MOVIES= 'ADD_MOVIES'
 export const DEL_FAV='DEL_FAV'
 export const ADD_FAV= 'ADD_FAV'  //action types
+export const SHOW_STATE='SHOW_STATE'
 
 export function addMovies(movies)
 {
@@ -30,3 +31,11 @@ export function deleteFav(movie)
 }
 
 
+export function showState(val)
+{
+    return{
+        type:SHOW_STATE,
+       val:val
+      };
+
+}

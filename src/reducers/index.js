@@ -1,9 +1,10 @@
 /* eslint-disable default-case */
-import {ADD_MOVIES, ADD_FAV} from '../actions/index'
+import {ADD_MOVIES, ADD_FAV,DEL_FAV, SHOW_STATE} from '../actions/index'
 
 const iniState={
     list:[],
-    favourites:[]
+    favourites:[],
+    showState:false
 }
 
 export default function movies( state=iniState, action)
@@ -29,7 +30,27 @@ export default function movies( state=iniState, action)
                 ...state,
                 favourites:[action.movie,...state.favourites]
             }
-            default:
+
+        case DEL_FAV:
+            const fil= state.favourites.filter(
+                movie=> movie.Title!== action.movie.Title
+            );
+            return{
+                ...state,
+                favourites:fil
+
+            }    
+
+        case SHOW_STATE:
+            return{
+                ...state,
+                showState:action.val
+
+            }
+            
+            
+
+        default:
             return state;            
         
     }

@@ -9,7 +9,7 @@ export default class  extends Component {
         this.props.dispatch(addFav(movie));
     }
    
-    handleUnClick=(movie)=>{
+    handleUnClick=()=>{
         const {movie} = this.props;
         this.props.dispatch(deleteFav(movie));
     }
