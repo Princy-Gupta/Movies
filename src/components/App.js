@@ -4,6 +4,7 @@ import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard'
 import React from 'react';
+import { addMovies } from '../actions';
 class App extends React.Component {
 
 componentDidMount(){
@@ -12,10 +13,9 @@ componentDidMount(){
   })
   // api calling
   // dispatch
-  this.props.store.dispatch({
-    type:'ADD_MOVIES',
-    movies:data
-  })
+  //Calling dispatch() "without any conditions" is technically possible, 
+  //however it leads to   an infinite loop as every dispatch() call usually triggers the listener again. 
+  this.props.store.dispatch(addMovies(data));
 }
 
 
