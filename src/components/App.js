@@ -19,8 +19,8 @@ componentDidMount(){
 }
 
 isfav=(movie)=>{
-  const {favourites}=this.props.store.getState();
-  const idx= favourites.indexOf(movie);
+  const {movies}=this.props.store.getState();
+  const idx= movies.favourites.indexOf(movie);
   if(idx!==-1)
   {
        return true;
@@ -33,7 +33,8 @@ changeTab=(val)=>{
 }
 
   render(){
-  const {list,favourites,showState}=this.props.store.getState();
+  const {movies} =  this.props.store.getState();
+  const {list,favourites,showState}=movies;
   console.log("Render",this.props.store.getState());
   const display=showState?favourites:list
   return (

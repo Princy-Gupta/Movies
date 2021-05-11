@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import movies from './reducers/index'
+import root from './reducers/index'
 import App from './components/App';
 import { createStore } from 'redux';
 
 
-const store= createStore(movies);
+const store= createStore(root);
 console.log(store);
 
 // store.dispatch({

@@ -7,7 +7,7 @@ const iniState={
     showState:false
 }
 
-export default function movies( state=iniState, action)
+export  function movies( state=iniState, action)
 {
     // if(action.type===ADD_MOVIES)
     // {
@@ -59,5 +59,25 @@ export default function movies( state=iniState, action)
 }
 
 
+const iniSearch={
+    result:{}
+}
+
+export function search(state=iniSearch,action)
+{
+    return state
+}
 
 
+const iniRoot={
+    movies:iniState,
+    search:iniSearch
+}
+
+export default function root(state=iniRoot, action)
+{
+    return{
+        movies:movies(state.movies,action),
+        search:search(state.search,action)
+    }
+}
