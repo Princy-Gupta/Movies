@@ -1,4 +1,5 @@
 /* eslint-disable default-case */
+import {combineReducers} from 'redux';
 import {ADD_MOVIES, ADD_FAV,DEL_FAV, SHOW_STATE} from '../actions/index'
 
 const iniState={
@@ -65,19 +66,24 @@ const iniSearch={
 
 export function search(state=iniSearch,action)
 {
-    return state
+    return state;
 }
 
 
-const iniRoot={
-    movies:iniState,
-    search:iniSearch
-}
+// const iniRoot={
+//     movies:iniState,
+//     search:iniSearch
+// }
 
-export default function root(state=iniRoot, action)
-{
-    return{
-        movies:movies(state.movies,action),
-        search:search(state.search,action)
-    }
-}
+// export default function root(state=iniRoot, action)
+// {
+//     return{
+//         movies:movies(state.movies,action),
+//         search:search(state.search,action)
+//     }
+// }
+
+export default combineReducers({
+    movies,
+    search
+});
