@@ -1,9 +1,23 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { Component } from 'react'
+import { addFav,deleteFav } from '../actions';
 
 export default class  extends Component {
+
+    handleClick=()=>{
+        const {movie} = this.props;
+        this.props.dispatch(addFav(movie));
+    }
+   
+    handleUnClick=(movie)=>{
+        const {movie} = this.props;
+        this.props.dispatch(deleteFav(movie));
+    }
+
+
   render() {
-      const {movie}=this.props
+      const {movie, isfav}=this.props
+
     return (
       <div className="movie-card">
         <div className="left">
@@ -14,7 +28,12 @@ export default class  extends Component {
             <div className="plot">{movie.Plot}</div>
             <div className="footer">
             <div className="rating">{movie.imdbRating}</div>
-            <button className="favourite-btn">Favourite</button>
+            {
+                isfav?
+                <button className="unfavourite-btn" onClick={this.handleUnClick}>UnFavourite</button>
+                : <button className="favourite-btn" onClick={this.handleClick}>Favourite</button>
+            }
+           
             </div>
 
         </div>

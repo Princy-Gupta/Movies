@@ -18,10 +18,19 @@ componentDidMount(){
   this.props.store.dispatch(addMovies(data));
 }
 
-
+isfav=(movie)=>{
+  const {favourites}=this.props.store.getState();
+  const idx= favourites.indexOf(movie);
+  if(idx!==-1)
+  {
+       return true;
+  }
+  return false;
+}
 
   render(){
-  const {list, favourites}=this.props.store.getState();
+  const {list}=this.props.store.getState();
+  console.log("Render",this.props.store.getState());
   return (
     <div className="App">
     
@@ -33,7 +42,7 @@ componentDidMount(){
         </div>
         <div className="list">
           {list.map((movie,idx) =>(
-            <MovieCard movie={movie} key={`movies-${idx}`}/>
+            <MovieCard movie={movie} key={`movies-${idx}`} dispatch={this.props.store.dispatch} isfav={this.isfav(movie)}/>
           ))}
         </div>
       </div>
