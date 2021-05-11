@@ -9,13 +9,13 @@ import { createStore } from 'redux';
 const store= createStore(movies);
 console.log(store);
 
-store.dispatch({
-  type:'ADD_MOVIES'
-})     // used to send actions
+// store.dispatch({
+//   type:'ADD_MOVIES'
+// })     // used to send actions
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App store={store}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

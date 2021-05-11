@@ -3,7 +3,25 @@ import './App.css';
 import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard'
-function App() {
+import React from 'react';
+class App extends React.Component {
+
+componentDidMount(){
+  this.props.store.subscribe(()=>{
+    this.forceUpdate();
+  })
+  // api calling
+  // dispatch
+  this.props.store.dispatch({
+    type:'ADD_MOVIES',
+    movies:data
+  })
+}
+
+
+
+  render(){
+  const movies=this.props.store.getState();
   return (
     <div className="App">
     
@@ -14,13 +32,14 @@ function App() {
           <div className="tab">Favourites</div>
         </div>
         <div className="list">
-          {data.map((movie,idx) =>(
+          {movies.map((movie,idx) =>(
             <MovieCard movie={movie} key={`movies-${idx}`}/>
           ))}
         </div>
       </div>
     </div>
   );
+}
 }
 
 export default App;
