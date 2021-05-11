@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import root from './reducers/index'
 import App from './components/App';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
-
-const store= createStore(root);
+const logger=function({dispatch,getState})
+{
+  return function(next)
+  {
+    return function(action)
+    {
+      // middleware code
+      console.log('action type:', action.type);
+      next(action);
+    }
+  }
+}
+const store= createStore(root,applyMiddleware(logger));
 console.log(store);
 
 // store.dispatch({
